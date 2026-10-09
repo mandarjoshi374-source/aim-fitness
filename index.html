@@ -1,0 +1,1484 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIM FITNESS — Target Your Goals. Aim Higher.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                black: "#09090b",
+                dark: "#121216",
+                card: "rgba(22, 22, 29, 0.65)",
+                border: "rgba(255, 255, 255, 0.08)",
+                orange: "#FF3B00",
+                amber: "#FF7700",
+                glow: "rgba(255, 59, 0, 0.25)",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              display: ["Instrument Serif", "serif"],
+            },
+            boxShadow: {
+              neon: "0 0 25px -5px rgba(255, 59, 0, 0.5)",
+              glass: "0 8px 32px 0 rgba(0, 0, 0, 0.37)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #09090b;
+        color: #f4f4f5;
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+      .font-display {
+        font-family: "Instrument Serif", serif !important;
+        font-weight: 400 !important;
+        letter-spacing: -0.01em;
+      }
+      h1.font-display {
+        line-height: 0.95 !important;
+      }
+      .glass-card {
+        background: rgba(18, 18, 24, 0.7);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      }
+      .glass-card-hover {
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .glass-card-hover:hover {
+        transform: translateY(-6px);
+        border-color: rgba(255, 59, 0, 0.4);
+        box-shadow: 0 12px 40px -10px rgba(255, 59, 0, 0.3);
+      }
+      .text-gradient-orange {
+        background: linear-gradient(135deg, #ff3b00 0%, #ff8800 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .bg-gradient-orange {
+        background: linear-gradient(135deg, #ff3b00 0%, #ff6b00 100%);
+      }
+      .hero-glow {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 59, 0, 0.18) 0%,
+          rgba(0, 0, 0, 0) 70%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #09090b;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #27272a;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #ff3b00;
+      }
+    </style>
+  </head>
+  <body class="relative min-h-screen">
+    <div class="hero-glow -top-40 -left-40 z-0"></div>
+    <div class="hero-glow top-1/3 -right-40 z-0"></div>
+    <div class="hero-glow bottom-10 left-1/3 z-0"></div>
+
+    <header
+      class="fixed top-0 left-0 w-full z-50 px-4 lg:px-8 py-4 transition-all duration-300"
+      id="main-header"
+    >
+      <div
+        class="max-w-7xl mx-auto glass-card rounded-2xl px-6 py-3.5 flex items-center justify-between"
+      >
+        <a href="#home" class="flex items-center gap-3 group">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-orange flex items-center justify-center font-display font-extrabold text-black text-xl shadow-neon transform group-hover:scale-105 transition-transform"
+          >
+            <i class="fa-solid fa-bullseye text-white text-lg"></i>
+          </div>
+          <div
+            class="font-display font-extrabold text-2xl tracking-wider text-white"
+          >
+            AIM <span class="text-gradient-orange">FITNESS</span>
+          </div>
+        </a>
+        <nav
+          class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300"
+        >
+          <a href="#home" class="hover:text-brand-orange transition-colors"
+            >Home</a
+          >
+          <a
+            href="#bmr-calculator"
+            class="hover:text-brand-orange transition-colors"
+            >Calorie AI</a
+          >
+          <a href="#diet" class="hover:text-brand-orange transition-colors"
+            >Diet</a
+          >
+          <a href="#pricing" class="hover:text-brand-orange transition-colors"
+            >Pricing</a
+          >
+          <a href="#trainers" class="hover:text-brand-orange transition-colors"
+            >Coach</a
+          >
+          <a href="#contact" class="hover:text-brand-orange transition-colors"
+            >Contact</a
+          >
+        </nav>
+        <div class="hidden sm:flex items-center gap-4">
+          <button
+            onclick="openPassModal('Header CTA')"
+            class="bg-gradient-orange hover:opacity-90 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-neon transition-all hover:scale-105"
+          >
+            Get Free Pass
+          </button>
+        </div>
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden text-zinc-300 hover:text-white p-2 text-xl focus:outline-none"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden mt-3 glass-card rounded-2xl p-6 flex flex-col gap-4 text-center"
+      >
+        <a
+          href="#home"
+          class="mobile-link text-zinc-200 py-2 border-b border-zinc-800"
+          >Home</a
+        >
+        <a
+          href="#bmr-calculator"
+          class="mobile-link text-zinc-200 py-2 border-b border-zinc-800"
+          >Calorie AI</a
+        >
+        <a
+          href="#diet"
+          class="mobile-link text-zinc-200 py-2 border-b border-zinc-800"
+          >Diet</a
+        >
+        <a
+          href="#pricing"
+          class="mobile-link text-zinc-200 py-2 border-b border-zinc-800"
+          >Pricing</a
+        >
+        <a
+          href="#trainers"
+          class="mobile-link text-zinc-200 py-2 border-b border-zinc-800"
+          >Coach</a
+        >
+        <a href="#contact" class="mobile-link text-zinc-200 py-2">Contact</a>
+        <button
+          onclick="openPassModal('Mobile Drawer')"
+          class="w-full mt-2 bg-gradient-orange text-white font-bold py-3 rounded-xl shadow-neon"
+        >
+          Claim 3-Day Pass
+        </button>
+      </div>
+    </header>
+
+    <section
+      id="home"
+      class="relative pt-32 lg:pt-44 pb-20 px-4 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center z-10"
+    >
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-brand-orange/30 text-xs font-semibold text-brand-orange uppercase tracking-widest mb-6 animate-pulse"
+      >
+        <span class="w-2 h-2 rounded-full bg-brand-orange"></span>Next Gen
+        Premium Fitness Hub
+      </div>
+      <h1
+        class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-none mb-6"
+      >
+        TARGET YOUR GOALS.<br /><span class="text-gradient-orange"
+          >AIM HIGHER.</span
+        >
+      </h1>
+      <p
+        class="max-w-2xl text-zinc-400 text-base sm:text-lg lg:text-xl font-normal mb-10 leading-relaxed"
+      >
+        Empowering elite transformations with state-of-the-art bio-equipment,
+        elite personal coaching, and high-intensity dynamic training programs.
+      </p>
+      <div
+        class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+      >
+        <button
+          onclick="openPassModal('Hero Primary')"
+          class="w-full sm:w-auto bg-gradient-orange text-white font-bold text-base px-8 py-4 rounded-xl shadow-neon transition-all hover:scale-105 flex items-center justify-center gap-3"
+        >
+          <span>Claim Free 3-Day Pass</span
+          ><i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <a
+          href="#pricing"
+          class="w-full sm:w-auto glass-card hover:bg-zinc-800/60 text-white font-semibold text-base px-8 py-4 rounded-xl border border-zinc-700/60 transition-all flex items-center justify-center gap-2"
+          ><i class="fa-solid fa-play text-xs text-brand-orange"></i>View
+          Plans</a
+        >
+      </div>
+    </section>
+
+    <section
+      id="bmr-calculator"
+      class="py-20 px-4 lg:px-8 max-w-7xl mx-auto z-10 relative"
+    >
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-zinc-800">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-5">
+            <span
+              class="text-xs font-bold text-brand-orange tracking-widest uppercase"
+              >Smart Nutrition Engine</span
+            >
+            <h3
+              class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4"
+            >
+              CALORIE & BMR AI CALCULATOR
+            </h3>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+              Calculate your Basal Metabolic Rate (BMR) and daily energy
+              expenditure right now to target your exact fitness objective.
+            </p>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-sm text-zinc-300">
+                <i class="fa-solid fa-circle-check text-brand-orange"></i
+                ><span>Mifflin-St Jeor Precision Algorithm</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-zinc-300">
+                <i class="fa-solid fa-circle-check text-brand-orange"></i
+                ><span>Custom Weight Loss & Fat Shred Targets</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-zinc-300">
+                <i class="fa-solid fa-circle-check text-brand-orange"></i
+                ><span>Muscle Gain Hypertrophy Surplus Rates</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="lg:col-span-7 bg-zinc-950/60 rounded-2xl p-6 sm:p-8 border border-zinc-800"
+          >
+            <form id="bmr-form" class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs text-zinc-400 font-semibold mb-2"
+                    >GENDER</label
+                  >
+                  <div class="grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      id="btn-male"
+                      onclick="setGender('male')"
+                      class="py-2.5 rounded-xl border border-brand-orange bg-brand-orange/20 text-white text-xs font-bold transition-all"
+                    >
+                      Male
+                    </button>
+                    <button
+                      type="button"
+                      id="btn-female"
+                      onclick="setGender('female')"
+                      class="py-2.5 rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 text-xs font-bold transition-all"
+                    >
+                      Female
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <label
+                    for="bmr-age"
+                    class="block text-xs text-zinc-400 font-semibold mb-2"
+                    >AGE (years)</label
+                  >
+                  <input
+                    type="number"
+                    id="bmr-age"
+                    value="25"
+                    min="10"
+                    max="90"
+                    class="w-full bg-zinc-900 border border-zinc-800 text-white rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-brand-orange"
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label
+                    for="bmr-weight"
+                    class="block text-xs text-zinc-400 font-semibold mb-2"
+                    >WEIGHT (kg)</label
+                  >
+                  <input
+                    type="number"
+                    id="bmr-weight"
+                    value="70"
+                    min="30"
+                    max="250"
+                    class="w-full bg-zinc-900 border border-zinc-800 text-white rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-brand-orange"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="bmr-height"
+                    class="block text-xs text-zinc-400 font-semibold mb-2"
+                    >HEIGHT (cm)</label
+                  >
+                  <input
+                    type="number"
+                    id="bmr-height"
+                    value="175"
+                    min="100"
+                    max="230"
+                    class="w-full bg-zinc-900 border border-zinc-800 text-white rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-brand-orange"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="bmr-activity"
+                  class="block text-xs text-zinc-400 font-semibold mb-2"
+                  >ACTIVITY LEVEL</label
+                >
+                <select
+                  id="bmr-activity"
+                  class="w-full bg-zinc-900 border border-zinc-800 text-white rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-brand-orange"
+                >
+                  <option value="1.2">Sedentary (Little or no exercise)</option>
+                  <option value="1.375">
+                    Lightly Active (Exercise 1-3 days/week)
+                  </option>
+                  <option value="1.55" selected>
+                    Moderately Active (Exercise 3-5 days/week)
+                  </option>
+                  <option value="1.725">
+                    Very Active (Hard workout 6-7 days/week)
+                  </option>
+                </select>
+              </div>
+            </form>
+            <div
+              class="mt-6 pt-6 border-t border-zinc-800 grid grid-cols-3 gap-3 text-center"
+            >
+              <div class="bg-zinc-900/90 p-3 rounded-xl border border-zinc-800">
+                <div class="text-[10px] text-zinc-400 font-bold uppercase">
+                  BMR Base
+                </div>
+                <div
+                  id="res-bmr"
+                  class="font-display text-lg sm:text-xl font-extrabold text-white mt-1"
+                >
+                  1,680
+                </div>
+                <div class="text-[10px] text-zinc-500">kcal/day</div>
+              </div>
+              <div
+                class="bg-zinc-900/90 p-3 rounded-xl border border-brand-orange/40 bg-brand-orange/5"
+              >
+                <div class="text-[10px] text-brand-orange font-bold uppercase">
+                  Maintenance
+                </div>
+                <div
+                  id="res-maint"
+                  class="font-display text-lg sm:text-xl font-extrabold text-brand-orange mt-1"
+                >
+                  2,604
+                </div>
+                <div class="text-[10px] text-zinc-500">kcal/day</div>
+              </div>
+              <div class="bg-zinc-900/90 p-3 rounded-xl border border-zinc-800">
+                <div class="text-[10px] text-zinc-400 font-bold uppercase">
+                  Fat Shred
+                </div>
+                <div
+                  id="res-shred"
+                  class="font-display text-lg sm:text-xl font-extrabold text-white mt-1"
+                >
+                  2,104
+                </div>
+                <div class="text-[10px] text-zinc-500">kcal/day</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="diet"
+      class="py-20 px-4 lg:px-8 max-w-7xl mx-auto z-10 relative"
+    >
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2
+          class="text-xs font-bold text-brand-orange tracking-widest uppercase mb-2"
+        >
+          Fuel Your Goals
+        </h2>
+        <h3 class="font-display text-3xl sm:text-5xl font-extrabold text-white">
+          HEALTHY DIET FOODS
+        </h3>
+        <p class="text-zinc-400 mt-3 text-sm sm:text-base">
+          Smart, everyday foods that support fat loss, muscle gain and recovery.
+          Values are approximate per 100 g.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          class="glass-card glass-card-hover rounded-2xl overflow-hidden flex flex-col group"
+        >
+          <div
+            class="relative h-44 overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-800 flex items-center justify-center"
+          >
+            <img
+              src="https://images.pexels.com/photos/2402503/pexels-photo-2402503.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="Boiled Eggs dish"
+              loading="lazy"
+              onerror="this.style.display = 'none'"
+              class="relative w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            /><span
+              class="absolute top-3 right-3 bg-zinc-900/80 text-brand-orange text-[10px] font-bold px-2.5 py-1 rounded-full uppercase border border-brand-orange/40"
+              >Protein</span
+            >
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h4 class="font-display text-xl font-bold text-white mb-2">
+              Boiled Eggs
+            </h4>
+            <p class="text-zinc-400 text-xs leading-relaxed mb-4 flex-1">
+              Complete protein with choline and vitamin B12. Keeps you full and
+              supports muscle repair.
+            </p>
+            <div
+              class="pt-4 border-t border-zinc-800 grid grid-cols-2 gap-2 text-center"
+            >
+              <div>
+                <div class="font-display text-lg font-extrabold text-white">
+                  155
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">kcal</div>
+              </div>
+              <div>
+                <div
+                  class="font-display text-lg font-extrabold text-brand-orange"
+                >
+                  13 g
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">Protein</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="glass-card glass-card-hover rounded-2xl overflow-hidden flex flex-col group"
+        >
+          <div
+            class="relative h-44 overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-800 flex items-center justify-center"
+          >
+            <img
+              src="https://images.pexels.com/photos/34463118/pexels-photo-34463118.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="Chicken Breast dish"
+              loading="lazy"
+              onerror="this.style.display = 'none'"
+              class="relative w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            /><span
+              class="absolute top-3 right-3 bg-zinc-900/80 text-brand-orange text-[10px] font-bold px-2.5 py-1 rounded-full uppercase border border-brand-orange/40"
+              >Lean Protein</span
+            >
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h4 class="font-display text-xl font-bold text-white mb-2">
+              Chicken Breast
+            </h4>
+            <p class="text-zinc-400 text-xs leading-relaxed mb-4 flex-1">
+              One of the leanest high-protein foods. Best grilled, boiled or
+              baked with minimal oil.
+            </p>
+            <div
+              class="pt-4 border-t border-zinc-800 grid grid-cols-2 gap-2 text-center"
+            >
+              <div>
+                <div class="font-display text-lg font-extrabold text-white">
+                  165
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">kcal</div>
+              </div>
+              <div>
+                <div
+                  class="font-display text-lg font-extrabold text-brand-orange"
+                >
+                  31 g
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">Protein</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="glass-card glass-card-hover rounded-2xl overflow-hidden flex flex-col group"
+        >
+          <div
+            class="relative h-44 overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-800 flex items-center justify-center"
+          >
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4MLnbpaYSuGbxTv3RDqvk84-7qy18s8Wqy0k7bBMyLoT6-9UVbAFaios&s=10"
+              alt="Paneer dish"
+              loading="lazy"
+              onerror="this.style.display = 'none'"
+              class="relative w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            /><span
+              class="absolute top-3 right-3 bg-zinc-900/80 text-brand-orange text-[10px] font-bold px-2.5 py-1 rounded-full uppercase border border-brand-orange/40"
+              >Protein + Calcium</span
+            >
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h4 class="font-display text-xl font-bold text-white mb-2">
+              Paneer
+            </h4>
+            <p class="text-zinc-400 text-xs leading-relaxed mb-4 flex-1">
+              A rich vegetarian protein source with calcium. Choose low-fat
+              paneer when cutting.
+            </p>
+            <div
+              class="pt-4 border-t border-zinc-800 grid grid-cols-2 gap-2 text-center"
+            >
+              <div>
+                <div class="font-display text-lg font-extrabold text-white">
+                  265
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">kcal</div>
+              </div>
+              <div>
+                <div
+                  class="font-display text-lg font-extrabold text-brand-orange"
+                >
+                  18 g
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">Protein</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="glass-card glass-card-hover rounded-2xl overflow-hidden flex flex-col group"
+        >
+          <div
+            class="relative h-44 overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-800 flex items-center justify-center"
+          >
+            <img
+              src="https://ganguram.com/cdn/shop/files/moong-dal_645f1dd2-ce05-4539-95c5-05de483ce97e.jpg?v=1756981455"
+              alt="Moong Dal dish"
+              loading="lazy"
+              onerror="this.style.display = 'none'"
+              class="relative w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            /><span
+              class="absolute top-3 right-3 bg-zinc-900/80 text-brand-orange text-[10px] font-bold px-2.5 py-1 rounded-full uppercase border border-brand-orange/40"
+              >Plant Protein</span
+            >
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h4 class="font-display text-xl font-bold text-white mb-2">
+              Moong Dal
+            </h4>
+            <p class="text-zinc-400 text-xs leading-relaxed mb-4 flex-1">
+              Light, easy to digest and high in fibre. A staple protein for
+              vegetarians.
+            </p>
+            <div
+              class="pt-4 border-t border-zinc-800 grid grid-cols-2 gap-2 text-center"
+            >
+              <div>
+                <div class="font-display text-lg font-extrabold text-white">
+                  105
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">kcal</div>
+              </div>
+              <div>
+                <div
+                  class="font-display text-lg font-extrabold text-brand-orange"
+                >
+                  7 g
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">Protein</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="glass-card glass-card-hover rounded-2xl overflow-hidden flex flex-col group"
+        >
+          <div
+            class="relative h-44 overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-800 flex items-center justify-center"
+          >
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSQj5ZkbWLz-wdKuQeEgD4bd7NTjGktz7kAUbwMU3DGC0nszctAPX8uEWj&s=10"
+              alt="Oats dish"
+              loading="lazy"
+              onerror="this.style.display = 'none'"
+              class="relative w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            /><span
+              class="absolute top-3 right-3 bg-zinc-900/80 text-brand-orange text-[10px] font-bold px-2.5 py-1 rounded-full uppercase border border-brand-orange/40"
+              >Complex Carbs</span
+            >
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h4 class="font-display text-xl font-bold text-white mb-2">Oats</h4>
+            <p class="text-zinc-400 text-xs leading-relaxed mb-4 flex-1">
+              Slow-digesting carbs with beta-glucan fibre for steady energy and
+              heart health. Values are for dry oats.
+            </p>
+            <div
+              class="pt-4 border-t border-zinc-800 grid grid-cols-2 gap-2 text-center"
+            >
+              <div>
+                <div class="font-display text-lg font-extrabold text-white">
+                  389
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">kcal</div>
+              </div>
+              <div>
+                <div
+                  class="font-display text-lg font-extrabold text-brand-orange"
+                >
+                  17 g
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">Protein</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="glass-card glass-card-hover rounded-2xl overflow-hidden flex flex-col group"
+        >
+          <div
+            class="relative h-44 overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-800 flex items-center justify-center"
+          >
+            <img
+              src="https://www.indianhealthyrecipes.com/wp-content/uploads/2022/04/mung-bean-sprouts-recipe.jpg"
+              alt="Moong Sprouts dish"
+              loading="lazy"
+              onerror="this.style.display = 'none'"
+              class="relative w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            /><span
+              class="absolute top-3 right-3 bg-zinc-900/80 text-brand-orange text-[10px] font-bold px-2.5 py-1 rounded-full uppercase border border-brand-orange/40"
+              >Fibre</span
+            >
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h4 class="font-display text-xl font-bold text-white mb-2">
+              Moong Sprouts
+            </h4>
+            <p class="text-zinc-400 text-xs leading-relaxed mb-4 flex-1">
+              Very low in calories and rich in fibre and vitamins. Great for
+              adding volume to meals.
+            </p>
+            <div
+              class="pt-4 border-t border-zinc-800 grid grid-cols-2 gap-2 text-center"
+            >
+              <div>
+                <div class="font-display text-lg font-extrabold text-white">
+                  30
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">kcal</div>
+              </div>
+              <div>
+                <div
+                  class="font-display text-lg font-extrabold text-brand-orange"
+                >
+                  3 g
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">Protein</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="glass-card glass-card-hover rounded-2xl overflow-hidden flex flex-col group"
+        >
+          <div
+            class="relative h-44 overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-800 flex items-center justify-center"
+          >
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJrKBtgw47qa16DmUGymeyvuGEd-ryT_ALbtKHEn0-GURChzZZmGipsx8&s=10"
+              alt="Curd (Dahi) dish"
+              loading="lazy"
+              onerror="this.style.display = 'none'"
+              class="relative w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            /><span
+              class="absolute top-3 right-3 bg-zinc-900/80 text-brand-orange text-[10px] font-bold px-2.5 py-1 rounded-full uppercase border border-brand-orange/40"
+              >Probiotic</span
+            >
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h4 class="font-display text-xl font-bold text-white mb-2">
+              Curd (Dahi)
+            </h4>
+            <p class="text-zinc-400 text-xs leading-relaxed mb-4 flex-1">
+              Probiotics support digestion and gut health. Pair with fruit, or
+              use it in place of cream.
+            </p>
+            <div
+              class="pt-4 border-t border-zinc-800 grid grid-cols-2 gap-2 text-center"
+            >
+              <div>
+                <div class="font-display text-lg font-extrabold text-white">
+                  60
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">kcal</div>
+              </div>
+              <div>
+                <div
+                  class="font-display text-lg font-extrabold text-brand-orange"
+                >
+                  3.5 g
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">Protein</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="glass-card glass-card-hover rounded-2xl overflow-hidden flex flex-col group"
+        >
+          <div
+            class="relative h-44 overflow-hidden bg-gradient-to-br from-zinc-900 to-zinc-800 flex items-center justify-center"
+          >
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Bz-EE0WuYx-CrEmBXUYGgqfpO8lR6C7lPChmM83USDuC26lDm1RFreI&s=10"
+              alt="Almonds dish"
+              loading="lazy"
+              onerror="this.style.display = 'none'"
+              class="relative w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            /><span
+              class="absolute top-3 right-3 bg-zinc-900/80 text-brand-orange text-[10px] font-bold px-2.5 py-1 rounded-full uppercase border border-brand-orange/40"
+              >Healthy Fats</span
+            >
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h4 class="font-display text-xl font-bold text-white mb-2">
+              Almonds
+            </h4>
+            <p class="text-zinc-400 text-xs leading-relaxed mb-4 flex-1">
+              Healthy fats and vitamin E. Calorie-dense, so keep to a small
+              handful (about 20 g) a day.
+            </p>
+            <div
+              class="pt-4 border-t border-zinc-800 grid grid-cols-2 gap-2 text-center"
+            >
+              <div>
+                <div class="font-display text-lg font-extrabold text-white">
+                  579
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">kcal</div>
+              </div>
+              <div>
+                <div
+                  class="font-display text-lg font-extrabold text-brand-orange"
+                >
+                  21 g
+                </div>
+                <div class="text-[10px] text-zinc-500 uppercase">Protein</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-zinc-500 text-xs mt-8">
+        Nutrition values vary by brand and cooking method. For a personal plan,
+        ask our coach.
+      </p>
+    </section>
+
+    <section
+      id="pricing"
+      class="py-20 px-4 lg:px-8 max-w-7xl mx-auto z-10 relative"
+    >
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2
+          class="text-xs font-bold text-brand-orange tracking-widest uppercase mb-2"
+        >
+          Flexible Passports
+        </h2>
+        <h3 class="font-display text-3xl sm:text-5xl font-extrabold text-white">
+          MEMBERSHIP PLANS
+        </h3>
+        <p class="text-zinc-400 mt-3 text-sm sm:text-base">
+          No hidden dynamic fees. Contract-free flexibility designed for serious
+          athletes.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div
+          class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col justify-between"
+        >
+          <div>
+            <div
+              class="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2"
+            >
+              Standard
+            </div>
+            <h4 class="font-display text-2xl font-bold text-white">
+              SILVER PASS
+            </h4>
+            <div class="mt-4 mb-6">
+              <span class="font-display text-4xl font-extrabold text-white"
+                >₹1,499</span
+              ><span class="text-zinc-400 text-sm">/ month</span>
+            </div>
+            <ul class="space-y-3 text-sm text-zinc-300 mb-8">
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-brand-orange"></i> Access to
+                Gym Floor & Weights
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-brand-orange"></i> Locker Room
+                & Shower Access
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-brand-orange"></i> Free Fitness
+                Orientation
+              </li>
+              <li class="flex items-center gap-3 text-zinc-600">
+                <i class="fa-solid fa-xmark"></i> Group Fitness Classes
+              </li>
+              <li class="flex items-center gap-3 text-zinc-600">
+                <i class="fa-solid fa-xmark"></i> Personal Trainer Consults
+              </li>
+            </ul>
+          </div>
+          <button
+            onclick="openPassModal('Silver Plan')"
+            class="w-full bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-3.5 rounded-xl transition-all"
+          >
+            Select Silver Plan
+          </button>
+        </div>
+        <div
+          class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col justify-between relative border-2 border-brand-orange/80 bg-zinc-900/90 shadow-neon"
+        >
+          <div
+            class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-orange text-white text-[11px] font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-md"
+          >
+            MOST POPULAR
+          </div>
+          <div>
+            <div
+              class="text-xs font-bold text-brand-orange uppercase tracking-widest mb-2"
+            >
+              Pro Performance
+            </div>
+            <h4 class="font-display text-2xl font-bold text-white">GOLD PRO</h4>
+            <div class="mt-4 mb-6">
+              <span class="font-display text-4xl font-extrabold text-white"
+                >₹2,999</span
+              ><span class="text-zinc-400 text-sm">/ month</span>
+            </div>
+            <ul class="space-y-3 text-sm text-zinc-300 mb-8">
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-brand-orange"></i> Unlimited
+                Gym & Weight Access
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-brand-orange"></i> Unlimited
+                Group Classes (HIIT, Yoga)
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-brand-orange"></i> Infrared
+                Sauna & Recovery Zone
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-brand-orange"></i> Monthly
+                InBody Composition Scan
+              </li>
+              <li class="flex items-center gap-3 text-zinc-600">
+                <i class="fa-solid fa-xmark"></i> 1-on-1 Dedicated Master Coach
+              </li>
+            </ul>
+          </div>
+          <button
+            onclick="openPassModal('Gold Pro Plan')"
+            class="w-full bg-gradient-orange hover:opacity-90 text-white font-bold py-3.5 rounded-xl shadow-neon transition-all"
+          >
+            Get Gold Pro Plan
+          </button>
+        </div>
+        <div
+          class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col justify-between"
+        >
+          <div>
+            <div
+              class="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2"
+            >
+              Elite VIP
+            </div>
+            <h4 class="font-display text-2xl font-bold text-white">
+              VIP ALL-ACCESS
+            </h4>
+            <div class="mt-4 mb-6">
+              <span class="font-display text-4xl font-extrabold text-white"
+                >₹4,999</span
+              ><span class="text-zinc-400 text-sm">/ month</span>
+            </div>
+            <ul class="space-y-3 text-sm text-zinc-300 mb-8">
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-brand-orange"></i> Everything
+                in Gold Pro Included
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-brand-orange"></i> 2x Monthly
+                1-on-1 PT Sessions
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-brand-orange"></i> Customized
+                AI Meal Plan & Macros
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-brand-orange"></i> VIP Locker &
+                Towel Service
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-brand-orange"></i> Guest Pass
+                (1 Friend/Month)
+              </li>
+            </ul>
+          </div>
+          <button
+            onclick="openPassModal('VIP Plan')"
+            class="w-full bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-3.5 rounded-xl transition-all"
+          >
+            Select VIP Plan
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="trainers"
+      class="py-20 px-4 lg:px-8 max-w-7xl mx-auto z-10 relative"
+    >
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2
+          class="text-xs font-bold text-brand-orange tracking-widest uppercase mb-2"
+        >
+          Expert Guidance
+        </h2>
+        <h3 class="font-display text-3xl sm:text-5xl font-extrabold text-white">
+          ELITE COACH
+        </h3>
+        <p class="text-zinc-400 mt-3 text-sm sm:text-base">
+          Train with a certified athletic specialist with a proven
+          transformation record.
+        </p>
+      </div>
+      <div class="flex justify-center">
+        <div
+          class="glass-card glass-card-hover rounded-2xl overflow-hidden group w-full max-w-sm"
+        >
+          <div class="h-72 overflow-hidden relative">
+            <img
+              src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=600&q=80"
+              alt="Marcus Vance"
+              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"
+            ></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <span class="text-xs font-bold text-brand-orange uppercase"
+                >Head Strength Coach</span
+              >
+              <h4 class="font-display text-xl font-bold text-white">
+                Marcus Vance
+              </h4>
+            </div>
+          </div>
+          <div
+            class="p-5 flex justify-between items-center text-xs text-zinc-400 border-t border-zinc-800/80"
+          >
+            <span>Specialty: Powerlifting & Hypertrophy</span>
+            <div class="flex gap-3 text-sm text-zinc-300">
+              <a href="#" class="hover:text-brand-orange"
+                ><i class="fa-brands fa-instagram"></i></a
+              ><a href="#" class="hover:text-brand-orange"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      id="enquiry"
+      class="py-20 px-4 lg:px-8 max-w-7xl mx-auto z-10 relative"
+    >
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2
+          class="text-xs font-bold text-brand-orange tracking-widest uppercase mb-2"
+        >
+          Get In Touch
+        </h2>
+        <h3 class="font-display text-3xl sm:text-5xl font-extrabold text-white">
+          ENQUIRY & LOCATION
+        </h3>
+        <p class="text-zinc-400 mt-3 text-sm sm:text-base">
+          Tell us your goal and we will call you back.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="glass-card rounded-3xl p-6 sm:p-8">
+          <form
+            id="enquiry-form"
+            onsubmit="handleEnquirySubmit(event)"
+            class="space-y-4"
+          >
+            <div>
+              <label class="block text-xs font-semibold text-zinc-400 mb-1"
+                >FULL NAME</label
+              ><input
+                type="text"
+                name="name"
+                required
+                placeholder="Your name"
+                class="w-full bg-zinc-900/90 border border-zinc-800 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-orange"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-zinc-400 mb-1"
+                >MOBILE NO.</label
+              ><input
+                type="tel"
+                name="mobile"
+                required
+                pattern="[0-9+ ]{10,15}"
+                placeholder="+91 98765 43210"
+                class="w-full bg-zinc-900/90 border border-zinc-800 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-orange"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-zinc-400 mb-1"
+                >YOUR GOAL</label
+              >
+              <select
+                name="goal"
+                required
+                class="w-full bg-zinc-900/90 border border-zinc-800 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-orange"
+              >
+                <option value="" disabled selected>Select your goal</option>
+                <option>Weight Loss</option>
+                <option>Weight Gain</option>
+                <option>Muscle Building</option>
+                <option>Body Toning</option>
+                <option>General Fitness</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-gradient-orange text-white font-bold py-3.5 rounded-xl shadow-neon transition-all hover:scale-[1.02]"
+            >
+              Send Enquiry
+            </button>
+          </form>
+          <div id="enquiry-success" class="hidden text-center py-8 space-y-3">
+            <div
+              class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mx-auto border border-emerald-500/40"
+            >
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <h4 class="font-display text-xl font-bold text-white">
+              Thank You!
+            </h4>
+            <p class="text-zinc-300 text-xs">
+              We have received your enquiry and will call you soon.
+            </p>
+          </div>
+        </div>
+        <div
+          class="glass-card rounded-3xl overflow-hidden min-h-[320px] flex flex-col"
+        >
+          <iframe
+            title="AIM FITNESS location"
+            class="w-full flex-1 min-h-[320px] border-0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=19.8986471,75.3571587&z=17&output=embed"
+          ></iframe>
+          <a
+            href="https://maps.app.goo.gl/7qbJ94j3sV5PTSFM9"
+            target="_blank"
+            rel="noopener"
+            class="block text-center text-sm font-semibold text-brand-orange py-3 border-t border-zinc-800 hover:bg-zinc-900/60"
+            ><i class="fa-solid fa-location-arrow mr-2"></i>Open in Google
+            Maps</a
+          >
+        </div>
+      </div>
+    </section>
+    <footer
+      id="contact"
+      class="pt-20 pb-10 border-t border-zinc-800/80 bg-zinc-950/90 z-10 relative"
+    >
+      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16"
+        >
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="w-8 h-8 rounded-lg bg-gradient-orange flex items-center justify-center font-display font-extrabold text-black text-base shadow-neon"
+              >
+                <i class="fa-solid fa-bullseye text-white text-xs"></i>
+              </div>
+              <div class="font-display font-extrabold text-xl text-white">
+                AIM <span class="text-gradient-orange">FITNESS</span>
+              </div>
+            </div>
+            <p class="text-zinc-400 text-xs leading-relaxed mb-6">
+              Premier athletic conditioning facility dedicated to unlocking peak
+              physical potential through modern training science.
+            </p>
+            <div class="flex gap-3 text-zinc-400">
+              <a
+                href="#"
+                class="w-9 h-9 rounded-xl glass-card flex items-center justify-center hover:text-brand-orange hover:border-brand-orange/40 transition-all"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-xl glass-card flex items-center justify-center hover:text-brand-orange hover:border-brand-orange/40 transition-all"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-xl glass-card flex items-center justify-center hover:text-brand-orange hover:border-brand-orange/40 transition-all"
+                ><i class="fa-brands fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div>
+            <h4
+              class="font-display text-sm font-bold text-white uppercase tracking-wider mb-4"
+            >
+              Quick Navigation
+            </h4>
+            <ul class="space-y-2 text-xs text-zinc-400">
+              <li>
+                <a
+                  href="#home"
+                  class="hover:text-brand-orange transition-colors"
+                  >Home Base</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#bmr-calculator"
+                  class="hover:text-brand-orange transition-colors"
+                  >BMR & Calorie Tool</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#pricing"
+                  class="hover:text-brand-orange transition-colors"
+                  >Membership Passports</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#trainers"
+                  class="hover:text-brand-orange transition-colors"
+                  >Certified Trainer</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="font-display text-sm font-bold text-white uppercase tracking-wider mb-4"
+            >
+              Operating Hours
+            </h4>
+            <ul class="space-y-2 text-xs text-zinc-400">
+              <li class="flex justify-between">
+                <span>Monday</span>
+                <span class="text-white font-medium"
+                  >6–10 AM &nbsp;|&nbsp; 6–10 PM</span
+                >
+              </li>
+              <li class="flex justify-between">
+                <span>Tuesday</span>
+                <span class="text-white font-medium"
+                  >6–10 AM &nbsp;|&nbsp; 6–10 PM</span
+                >
+              </li>
+              <li class="flex justify-between">
+                <span>Wednesday</span>
+                <span class="text-white font-medium"
+                  >6–10 AM &nbsp;|&nbsp; 6–10 PM</span
+                >
+              </li>
+              <li class="flex justify-between">
+                <span>Thursday</span>
+                <span class="text-white font-medium"
+                  >6–10 AM &nbsp;|&nbsp; 6–10 PM</span
+                >
+              </li>
+              <li class="flex justify-between">
+                <span>Friday</span>
+                <span class="text-white font-medium"
+                  >6–10 AM &nbsp;|&nbsp; 6–10 PM</span
+                >
+              </li>
+              <li class="flex justify-between">
+                <span>Saturday</span>
+                <span class="text-white font-medium"
+                  >6–10 AM &nbsp;|&nbsp; 6–10 PM</span
+                >
+              </li>
+              <li class="flex justify-between">
+                <span>Sunday</span>
+                <span class="text-red-400 font-semibold">Closed</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="font-display text-sm font-bold text-white uppercase tracking-wider mb-4"
+            >
+              Location & Contact
+            </h4>
+            <ul class="space-y-3 text-xs text-zinc-400">
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-location-dot text-brand-orange mt-0.5"></i
+                ><span
+                  >N 9, Hudco, Near T.V. Centre, Chhatrapati Sambhajinagar,
+                  Maharashtra 431003</span
+                >
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-phone text-brand-orange"></i
+                ><span>+91 98765 43210</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-envelope text-brand-orange"></i
+                ><span>join@aimfitness.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4"
+        >
+          <div>&copy; 2026 AIM FITNESS. All rights reserved.</div>
+          <div class="flex gap-6">
+            <a href="#" class="hover:text-zinc-400">Privacy Policy</a
+            ><a href="#" class="hover:text-zinc-400">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div
+      id="pass-modal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300"
+    >
+      <div
+        class="glass-card rounded-3xl p-6 sm:p-8 max-w-md w-full relative border border-brand-orange/40 shadow-neon transform scale-95 transition-transform duration-300"
+        id="modal-card"
+      >
+        <button
+          onclick="closePassModal()"
+          class="absolute top-4 right-4 text-zinc-400 hover:text-white w-8 h-8 rounded-full glass-card flex items-center justify-center text-lg"
+        >
+          &times;
+        </button>
+        <div class="text-center mb-6">
+          <div
+            class="w-12 h-12 rounded-2xl bg-gradient-orange flex items-center justify-center text-white text-xl font-bold mx-auto mb-3 shadow-neon"
+          >
+            <i class="fa-solid fa-ticket"></i>
+          </div>
+          <h3 class="font-display text-2xl font-extrabold text-white">
+            CLAIM YOUR 3-DAY PASS
+          </h3>
+          <p class="text-zinc-400 text-xs mt-1" id="modal-subtitle">
+            Instant VIP access code delivered directly to your email.
+          </p>
+        </div>
+        <form
+          id="modal-pass-form"
+          onsubmit="handlePassSubmit(event)"
+          class="space-y-4"
+        >
+          <div>
+            <label class="block text-xs font-semibold text-zinc-400 mb-1"
+              >FULL NAME</label
+            ><input
+              type="text"
+              required
+              placeholder="Alex Mercer"
+              class="w-full bg-zinc-900/90 border border-zinc-800 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-orange"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-zinc-400 mb-1"
+              >EMAIL ADDRESS</label
+            ><input
+              type="email"
+              required
+              placeholder="alex@example.com"
+              class="w-full bg-zinc-900/90 border border-zinc-800 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-orange"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-zinc-400 mb-1"
+              >PHONE NUMBER</label
+            ><input
+              type="tel"
+              required
+              placeholder="+91 98765 43210"
+              class="w-full bg-zinc-900/90 border border-zinc-800 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-orange"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-gradient-orange text-white font-bold py-3.5 rounded-xl shadow-neon transition-all hover:scale-[1.02] mt-2"
+          >
+            Generate Instant Pass
+          </button>
+        </form>
+        <div id="modal-success" class="hidden text-center py-6 space-y-4">
+          <div
+            class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mx-auto border border-emerald-500/40"
+          >
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h4 class="font-display text-xl font-bold text-white">
+            Pass Activated!
+          </h4>
+          <p class="text-zinc-300 text-xs leading-relaxed">
+            Your 3-Day Free Trial Pass code
+            <span class="text-brand-orange font-bold">#AIM-8890</span> has been
+            sent. Show this at our reception desk!
+          </p>
+          <button
+            onclick="closePassModal()"
+            class="w-full bg-zinc-800 text-white font-semibold py-3 rounded-xl text-xs hover:bg-zinc-700"
+          >
+            Close Window
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const mobileBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      mobileBtn.addEventListener("click", () =>
+        mobileMenu.classList.toggle("hidden"),
+      );
+      document
+        .querySelectorAll(".mobile-link")
+        .forEach((l) =>
+          l.addEventListener("click", () => mobileMenu.classList.add("hidden")),
+        );
+
+      let currentGender = "male";
+      function setGender(gender) {
+        currentGender = gender;
+        const on =
+          "py-2.5 rounded-xl border border-brand-orange bg-brand-orange/20 text-white text-xs font-bold transition-all";
+        const off =
+          "py-2.5 rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 text-xs font-bold transition-all";
+        document.getElementById("btn-male").className =
+          gender === "male" ? on : off;
+        document.getElementById("btn-female").className =
+          gender === "female" ? on : off;
+        calculateBMR();
+      }
+      function calculateBMR() {
+        const age = parseFloat(document.getElementById("bmr-age").value) || 25;
+        const weight =
+          parseFloat(document.getElementById("bmr-weight").value) || 70;
+        const height =
+          parseFloat(document.getElementById("bmr-height").value) || 175;
+        const activity =
+          parseFloat(document.getElementById("bmr-activity").value) || 1.55;
+        let bmr = 10 * weight + 6.25 * height - 5 * age;
+        bmr += currentGender === "male" ? 5 : -161;
+        const maintenance = bmr * activity;
+        document.getElementById("res-bmr").innerText =
+          Math.round(bmr).toLocaleString();
+        document.getElementById("res-maint").innerText =
+          Math.round(maintenance).toLocaleString();
+        document.getElementById("res-shred").innerText = Math.round(
+          maintenance - 500,
+        ).toLocaleString();
+      }
+      ["bmr-age", "bmr-weight", "bmr-height", "bmr-activity"].forEach((id) =>
+        document.getElementById(id).addEventListener("input", calculateBMR),
+      );
+      window.onload = calculateBMR;
+
+      const modal = document.getElementById("pass-modal");
+      const modalCard = document.getElementById("modal-card");
+      const modalSubtitle = document.getElementById("modal-subtitle");
+      const passForm = document.getElementById("modal-pass-form");
+      const passSuccess = document.getElementById("modal-success");
+      function openPassModal(source = "General Pass") {
+        modalSubtitle.innerText = `Claiming access via ${source}. Entrance code delivered instantly.`;
+        passForm.classList.remove("hidden");
+        passSuccess.classList.add("hidden");
+        modal.classList.remove("hidden");
+        setTimeout(() => {
+          modal.classList.remove("opacity-0");
+          modalCard.classList.remove("scale-95");
+          modalCard.classList.add("scale-100");
+        }, 10);
+      }
+      function closePassModal() {
+        modal.classList.add("opacity-0");
+        modalCard.classList.remove("scale-100");
+        modalCard.classList.add("scale-95");
+        setTimeout(() => modal.classList.add("hidden"), 300);
+      }
+      function handlePassSubmit(event) {
+        event.preventDefault();
+        passForm.classList.add("hidden");
+        passSuccess.classList.remove("hidden");
+      }
+      function handleEnquirySubmit(event) {
+        event.preventDefault();
+        document.getElementById("enquiry-form").classList.add("hidden");
+        document.getElementById("enquiry-success").classList.remove("hidden");
+      }
+    </script>
+  </body>
+</html>
